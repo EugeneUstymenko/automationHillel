@@ -2,32 +2,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
-import javax.swing.*;
 import java.util.List;
 
 public class TestCheckboxesHomework {
-    private String baseUrl = "http://www.leafground.com/pages/checkbox.html";
-    private By languagesCheckBoxInputLocator = By.xpath("//*[@id='contentblock']/section/div[1]/input[1]");
-    private By confirmSeleniumCheckBoxInputLocator = By.xpath("//*[@id='contentblock']/section/div[2]/" +
-            "text()='Selenium'");
-    private By deSelectOnlyCheckBoxSelectOnlyCheckBoxInputLocator = By.xpath("//*[@id=эcontentblockэ]/" +
-            "section/div[3]/text()='I am Selected'");
-    private By selectAllBelowCheckBoxInputLocator = By.xpath("//*[@id='contentblock']/section/div[3]/input" +
-            "text()[2]");
-    private WebDriver driver;
+    private final By languagesCheckBoxInputLocator = By.xpath("//label[text()='Select the languages that you know?']" +
+            "/following-sibling::input");
+    private final By confirmSeleniumCheckBoxInputLocator = By.xpath("//label[text()='Confirm Selenium is checked']" +
+            "/following-sibling::input");
+    private final By deSelectOnlyCheckBoxSelectOnlyCheckBoxInputLocator = By.xpath("//label[text()='DeSelect only checked']" +
+            "/following-sibling::input[2]");
+    private final By selectAllBelowCheckBoxInputLocator = By.xpath("//label[text()='Select all below checkboxes ']" +
+            "/following-sibling::input");
+    private static WebDriver driver;
     private WebElement languagesCheckBox;
     private WebElement confirmSeleniumCheckBox;
     private WebElement deSelectOnlyCheckBoxSelectOnlyCheckBox;
-    //private WebElement selectAllBelowCheckBox;
     private List<WebElement> selectAllBelowCheckBox;
 
     @BeforeClass
-    public void setUo(){
+    public void setUp(){
         System.setProperty("selenium.chrome.driver", "chromedriver.exe");
+        String baseUrl = "http://www.leafground.com/pages/checkbox.html";
         driver = new ChromeDriver();
         driver.get(baseUrl);
 
@@ -35,14 +32,35 @@ public class TestCheckboxesHomework {
         languagesCheckBox.click();
 
         confirmSeleniumCheckBox = driver.findElement(confirmSeleniumCheckBoxInputLocator);
-        deSelectOnlyCheckBoxSelectOnlyCheckBox = driver.findElement(deSelectOnlyCheckBoxSelectOnlyCheckBoxInputLocator);
-        //selectAllBelowCheckBox = driver.findElement(selectAllBelowCheckBoxInputLocator);
-        selectAllBelowCheckBox = driver.findElements(selectAllBelowCheckBoxInputLocator);
-    }
 
+        deSelectOnlyCheckBoxSelectOnlyCheckBox = driver.findElement(deSelectOnlyCheckBoxSelectOnlyCheckBoxInputLocator);
+        deSelectOnlyCheckBoxSelectOnlyCheckBox.click();
+
+        selectAllBelowCheckBox = driver.findElements(selectAllBelowCheckBoxInputLocator);
+        for (WebElement checkBox : selectAllBelowCheckBox) {
+            checkBox.click();
+        }
+    }
     @Test
     public void checkBoxJavaTests(){
-
         Assert.assertTrue(languagesCheckBox.isSelected());
+    }
+    @Test
+    public void checkBoxSeleniumTests(){
+        Assert.assertTrue(confirmSeleniumCheckBox.isSelected());
+    }
+    @Test
+    public void checkBoxIAmTests(){
+        Assert.assertFalse(deSelectOnlyCheckBoxSelectOnlyCheckBox.isSelected());
+    }
+    @Test
+    public void checkBoxesOption(){
+        for (WebElement checkBox:selectAllBelowCheckBox) {
+            Assert.assertTrue(checkBox.isSelected());
+        }
+    }
+    @org.junit.AfterClass
+    public static void tearDown(){
+        driver.close();
     }
 }
