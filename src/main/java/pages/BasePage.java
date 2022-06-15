@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -14,6 +15,7 @@ public abstract class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        PageFactory.initElements(driver, this);
     }
 
     public void waitUntilLoaded() {
@@ -23,11 +25,4 @@ public abstract class BasePage {
     public void navigate() {
         driver.get(pageUrl);
     }
-
-    //For example JavascriptExecutor
-    /*public void waitUntilJsIsReady() {
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        webDriverWait.until((ExpectedCondition<Boolean>) wd ->
-                ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
-    }*/
 }

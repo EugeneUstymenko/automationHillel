@@ -1,18 +1,26 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MailinatorInboxPage extends BasePage{
 
-    private final By lastLetter = By.xpath("//td[contains(text(), 'qwerty')]");
-    private final By inboxField = By.id("inbox_field");
-    private final By goButton = By.className("primary-btn");
-    private final By subjectLetter = By.xpath("//div[contains(text(), 'qwerty')]");
-    private final By letterFrom = By.xpath("//div[contains(text(), 'lperevoznyk@ukr.net')]");
-    private final By bodyMailinatorIFrame = By.cssSelector("#html_msg_body");
-    private final By textLetter = By.cssSelector(".xfmc1");
+    @FindBy(xpath = "//td[contains(text(), 'qwerty')]")
+    private WebElement lastLetter;
+    @FindBy(id = "inbox_field")
+    private WebElement inboxField;
+    @FindBy(className = "primary-btn")
+    private WebElement goButton;
+    @FindBy(xpath = "//div[contains(text(), 'qwerty')]")
+    private WebElement subjectLetter;
+    @FindBy(xpath = "//div[contains(text(), 'lperevoznyk@ukr.net')]")
+    private WebElement letterFrom;
+    @FindBy(css = "#html_msg_body")
+    private WebElement bodyMailinatorIFrame;
+    @FindBy(css = ".xfmc1")
+    private WebElement textLetter;
 
     public MailinatorInboxPage(WebDriver driver){
         super(driver);
@@ -20,52 +28,32 @@ public class MailinatorInboxPage extends BasePage{
     }
 
     public void clickLastLetter(){
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(lastLetter));
-        driver.findElement(lastLetter).click();
+        webDriverWait.until(ExpectedConditions.visibilityOf(lastLetter));
+        lastLetter.click();
     }
 
     public void goToInbox(String inbox){
-        driver.findElement(inboxField).sendKeys(inbox);
-        driver.findElement(goButton).click();
+        inboxField.sendKeys(inbox);
+        goButton.click();
     }
 
     public String checkSubjectLetter(){
-        return driver.findElement(subjectLetter).getText();
+        return subjectLetter.getText();
     }
 
     public String checkLetterFrom(){
-        return driver.findElement(letterFrom).getText();
+        return letterFrom.getText();
     }
 
     public String checkTextLetter(){
         String textLetter;
         try{
-            driver.switchTo().frame(driver.findElement(bodyMailinatorIFrame));
-            textLetter = driver.findElement(this.textLetter).getText();
+            driver.switchTo().frame(bodyMailinatorIFrame);
+            textLetter = this.textLetter.getText();
         }
         finally {
             driver.switchTo().parentFrame();
         }
         return textLetter;
     }
-
-    //For example ElementException time
-   /* public void waitUntilLettersIsDisplayed() {
-        for (int i = 0; i < 8; i++) {
-            System.out.println(i);
-            try {
-                if (driver.findElement(lastLetter).isDisplayed()) {
-                    return;
-                }
-            } catch (NoSuchElementException e) {
-                System.out.println(e.getMessage());
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-        throw new TimeoutException();
-    }*/
 }
