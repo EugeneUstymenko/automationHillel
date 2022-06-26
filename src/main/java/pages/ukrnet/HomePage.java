@@ -1,9 +1,10 @@
-package pages;
+package pages.ukrnet;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pages.BasePage;
 
 public class HomePage extends BasePage {
 
@@ -28,8 +29,7 @@ public class HomePage extends BasePage {
     }
 
     public void clickWriteLetter() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(writeLetterButton));
-        writeLetterButton.click();
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(writeLetterButton)).click();
     }
 
     public void writeLetter(String to, String subject, String body) {

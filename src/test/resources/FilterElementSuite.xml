@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Filter element suite">
+    <test name="Filter element">
+        <classes>
+            <class name="ui.filterelement.FilterElementTest" />
+        </classes>
+    </test>
+</suite>
