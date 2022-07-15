@@ -1,8 +1,6 @@
 package pages.google;
 
-import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import pages.BasePage;
 
 import static com.codeborne.selenide.Condition.*;
@@ -11,6 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class GoogleHomePage extends BasePage {
 
     private static final By SEARCH_FIELD = By.cssSelector("[name = 'q']");
+    private static final By SELENIDE_PAGES = By.xpath("//h3[contains(text(), 'Selenide')]");
 
     public GoogleHomePage waitUntilSearchFieldDisplayed(){
         $(SEARCH_FIELD).shouldBe(visible);
@@ -22,8 +21,11 @@ public class GoogleHomePage extends BasePage {
         return this;
     }
 
-    public GoogleHomePage pressEnter(){
+    public void pressEnter(){
         $(SEARCH_FIELD).pressEnter();
-        return this;
+    }
+
+    public void openSelenideSite(){
+        $$(SELENIDE_PAGES).get(0).click();
     }
 }

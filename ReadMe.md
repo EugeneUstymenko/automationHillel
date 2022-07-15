@@ -1,4 +1,23 @@
-This project contains a custom framework and tasks for testing different functionality.
+# Courses. Custom framework 
+***
+### This project contains a custom framework and tasks for testing different functionality.<br/>And some drafts about used stacks on the framework.
+\
+\
+Stack using instruments:
+
+    1. Maven
+    2. Selenium/web driver
+    3. Junit
+    4. Selenide
+    5. Rest-assured
+    6. Hamcrest
+    7. Jackson-databind
+    8. Lombok
+    9. Owner
+    10. Assertj-core
+\
+\
+Tests 
 
 Test #1 "Check boxes"
 
@@ -56,4 +75,18 @@ Test #5 "Filter element"
     
     Task
     1. On the page http://the-internet.herokuapp.com/login page, select all titles wich starting from character 'A'
-                
+
+Test #6 "Use selenide search"
+
+    website: https://www.google.com.ua
+    website: https://ru.selenide.org
+
+    Task
+    1. Go to google.com
+    2. Google "Selenide"
+    3. Check if there are more than 7 results
+    4. Follow the first link
+    5. Check if the page is open
+    6. Check that Selenide supports Ukraine
+    7. Go to "Blog" tab
+    8. Check if the page is open

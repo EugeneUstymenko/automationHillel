@@ -3,7 +3,7 @@
 <suite name="Check boxes suite">
     <test name="Check boxes">
         <classes>
-            <class name="ui.checkboxes.CheckBoxesTest" />
+            <class name="ui.tests.checkboxes.CheckBoxesTest" />
         </classes>
     </test>
 </suite>

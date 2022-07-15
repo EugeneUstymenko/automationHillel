@@ -1,4 +1,4 @@
-package ui.ukrnet;
+package ui.tests.ukrnet;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -6,7 +6,7 @@ import pages.mailinator.MailinatorInboxPage;
 import pages.ukrnet.HomePage;
 import pages.ukrnet.LoginPage;
 import testdata.User;
-import ui.BaseTest;
+import ui.tests.BaseTest;
 
 public class UrkNetTest extends BaseTest {
 

@@ -1,4 +1,4 @@
-package ui.resrassureddemo;
+package ui.restassureddemo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.PetDto;
@@ -7,9 +7,11 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.path.json.JsonPath;
 import io.restassured.specification.RequestSpecification;
 import lombok.SneakyThrows;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import java.util.ArrayList;
+import java.util.List;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RestAssuredExample {
 
@@ -63,8 +65,25 @@ public class RestAssuredExample {
         //from json to java obj
         PetDto responsePet = new ObjectMapper().readValue(jsonResponsePet.prettify(), PetDto.class);
 
+        assertThat(responsePet)
+                .usingRecursiveComparison()
+                .ignoringFields("id")
+                .isEqualTo(requestPet);
+    }
 
-        Assert.assertEquals(requestPet, responsePet);
+    @Test
+    public void collectionTest(){
+        List<String> actualCollection = new ArrayList<>();
+        actualCollection = List.of("one", "two", "three", "four");
+
+        List<String> expectedCollection = new ArrayList<>();
+        expectedCollection = List.of("two", "one",  "four", "three");
+
+        assertThat(actualCollection)
+                .hasSize(4)
+                .allMatch(element -> element.length() > 2)
+                .anyMatch(element -> element.length() == 4)
+                .noneMatch(String :: isEmpty); //Method reference
     }
 }
 
