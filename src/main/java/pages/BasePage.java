@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,5 +25,10 @@ public abstract class BasePage {
 
     public void navigate() {
         driver.get(pageUrl);
+    }
+
+    protected String waitAndGetText(WebElement element) {
+        webDriverWait.withTimeout(Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOf(element));
+        return element.getText();
     }
 }

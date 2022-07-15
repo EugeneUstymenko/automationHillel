@@ -1,11 +1,16 @@
-package pages;
+package pages.mailinator;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import pages.BasePage;
 
-public class MailinatorInboxPage extends BasePage{
+import java.time.Duration;
+
+public class MailinatorInboxPage extends BasePage {
 
     @FindBy(xpath = "//td[contains(text(), 'qwerty')]")
     private WebElement lastLetter;
@@ -28,7 +33,11 @@ public class MailinatorInboxPage extends BasePage{
     }
 
     public void clickLastLetter(){
-        webDriverWait.until(ExpectedConditions.visibilityOf(lastLetter));
+        new FluentWait<>(driver).withTimeout(Duration.ofSeconds(5))
+                        .pollingEvery(Duration.ofMillis(200))
+                        .ignoring(NoSuchElementException.class)
+                        .until(ExpectedConditions.elementToBeClickable(lastLetter));
+
         lastLetter.click();
     }
 
@@ -38,6 +47,7 @@ public class MailinatorInboxPage extends BasePage{
     }
 
     public String checkSubjectLetter(){
+        webDriverWait.until(ExpectedConditions.visibilityOf(subjectLetter));
         return subjectLetter.getText();
     }
 

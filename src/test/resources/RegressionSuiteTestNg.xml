@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression suite">
+
+    <!--Пример групирования тестов которые нам не надо использовать-->
+    <groups>
+        <run>
+            <exclude name="exclude-me"/>
+        </run>
+    </groups>
+
+    <suite-files>
+        <suite-file path="TheInternetSuite.xml"/>
+        <suite-file path="UkrNetSuite.xml"/>
+        <suite-file path="CheckBoxesSuite.xml"/>
+        <suite-file path="WaitSuite.xml"/>
+        <suite-file path="FilterElementSuite.xml"/>
+    </suite-files>
+</suite>
