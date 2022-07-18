@@ -1,7 +1,9 @@
 package ui.restassureddemo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dto.OrderDto;
 import dto.PetDto;
+import helpers.PreRequestsScripts;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.path.json.JsonPath;
@@ -69,6 +71,19 @@ public class RestAssuredExample {
                 .usingRecursiveComparison()
                 .ignoringFields("id")
                 .isEqualTo(requestPet);
+    }
+
+    @Test
+    @SneakyThrows
+    public void creteOrder(){
+        OrderDto orderDto = OrderDto
+                .builder()
+                .id(10101)
+                .petId(1)
+                .quantity(1000)
+                .status(PreRequestsScripts.StatusOrderPet.approved)
+                .complete(true)
+                .build();
     }
 
     @Test
