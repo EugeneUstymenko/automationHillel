@@ -1,6 +1,5 @@
 package configreader;
 
-
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.Config.Sources;
 
@@ -10,6 +9,13 @@ public interface FrameworkProperties extends Config {
     @Key("foo.bar")
     String getFooBar();
 
-    @Key("selenium.timeout")
-    int getTimeout();
+    @Key("selenium.pageload.timeout")
+    int getPageTimeout();
+
+    @Key("text.test")
+    String getTextTest();
+
+    @Key("selenium.implicitly.timeout")
+    int getImplicitlyTimeout();
+
 }

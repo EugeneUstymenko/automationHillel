@@ -7,10 +7,12 @@ import org.testng.annotations.Test;
 public class ConfigTest {
 
     @Test
-    public void ownerConfigTest(){
+    public void ownerConfigTest() {
         FrameworkProperties frameworkProperties =
                 ConfigFactory.create(FrameworkProperties.class);
         System.out.println(frameworkProperties.getFooBar());
-        System.out.println(frameworkProperties.getTimeout());
+        System.out.println(frameworkProperties.getTextTest());
+        System.out.println(frameworkProperties.getPageTimeout());
+        System.out.println(frameworkProperties.getImplicitlyTimeout());
     }
 }
