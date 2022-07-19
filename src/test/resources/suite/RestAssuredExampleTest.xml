@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Rest assured example suite">
+    <test name="Rest assured example">
+        <classes>
+            <class name="ui.tests.restassureddemo.RestAssuredExampleTest" />
+        </classes>
+    </test>
+</suite>

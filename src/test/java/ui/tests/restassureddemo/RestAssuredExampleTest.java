@@ -1,9 +1,9 @@
-package ui.restassureddemo;
+package ui.tests.restassureddemo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.OrderDto;
 import dto.PetDto;
-import helpers.PreRequestsScripts;
+import helpers.PreRequestsScriptsRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.path.json.JsonPath;
@@ -11,11 +11,10 @@ import io.restassured.specification.RequestSpecification;
 import lombok.SneakyThrows;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import java.util.ArrayList;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RestAssuredExample {
+public class RestAssuredExampleTest {
 
     private static final String BASE_URL = "https://petstore.swagger.io/v2";
 
@@ -76,23 +75,52 @@ public class RestAssuredExample {
     @Test
     @SneakyThrows
     public void creteOrder(){
-        OrderDto orderDto = OrderDto
+        OrderDto requestOrder = OrderDto
                 .builder()
                 .id(10101)
                 .petId(1)
                 .quantity(1000)
-                .status(PreRequestsScripts.StatusOrderPet.approved)
+                .shipDate(PreRequestsScriptsRestAssured.setData())
+                .status(PreRequestsScriptsRestAssured.StatusOrderPet.approved)
                 .complete(true)
                 .build();
+
+        int orderId = RestAssured
+                .given()
+                .spec(requestSpecification)
+                .body(new ObjectMapper().writeValueAsString(requestOrder))
+                .when()
+                .post("/store/order")
+                .then()
+                .statusCode(200)
+                .extract()
+                .body()
+                .jsonPath()
+                .getInt("id");
+
+
+        JsonPath jsonResponseOrder = RestAssured
+                .given()
+                .spec(requestSpecification)
+                .when()
+                .get("/store/order/" + orderId)
+                .then()
+                .statusCode(200)
+                .extract()
+                .body()
+                .jsonPath();
+
+        OrderDto responseOrder = new ObjectMapper().readValue(jsonResponseOrder.prettify(), OrderDto.class);
+
+        assertThat(responseOrder)
+                .isEqualTo(requestOrder);
+
     }
 
     @Test
     public void collectionTest(){
-        List<String> actualCollection = new ArrayList<>();
+        List<String> actualCollection;
         actualCollection = List.of("one", "two", "three", "four");
-
-        List<String> expectedCollection = new ArrayList<>();
-        expectedCollection = List.of("two", "one",  "four", "three");
 
         assertThat(actualCollection)
                 .hasSize(4)
