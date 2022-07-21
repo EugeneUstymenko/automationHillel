@@ -2,7 +2,7 @@
 
 <suite name="The internet suite">
     <listeners>
-        <listener class-name="lisenens.TestListener"/>
+        <listener class-name="lisenens.ListenerTest"/>
     </listeners>
     <test name="The internet" >
         <packages>

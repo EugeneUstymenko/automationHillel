@@ -22,24 +22,28 @@
     </properties>
 
     <dependencies>
+        <!--Chrome driver control-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
             <version>4.3.0</version>
         </dependency>
 
+        <!--Test NG runner -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.6.0</version>
         </dependency>
 
+        <!--Settings loge-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.36</version>
         </dependency>
 
+        <!--Test runner-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -47,18 +51,24 @@
             <scope>test</scope>
         </dependency>
 
+        <!--Decorator web driver-->
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>6.6.6</version>
         </dependency>
 
+        <!--Work with property add config file-->
+        <!--Add config file-->
         <dependency>
             <groupId>org.aeonbits.owner</groupId>
             <artifactId>owner</artifactId>
             <version>1.0.12</version>
         </dependency>
 
+        <!--Upgrade Assert-->
+        <!--Ignore field when assert-->
+        <!--Assert match collection-->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -66,6 +76,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!--API framework-->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -73,6 +84,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!--assert помогает для рест ашура-->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
@@ -80,12 +92,16 @@
             <scope>test</scope>
         </dependency>
 
+        <!--Parse json in Object-->
+        <!--Parse Object in json-->
+        <!--Can ignore exception @JsonIgnoreProperties-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.13.3</version>
         </dependency>
 
+        <!--Automatic add: getter, setter, constructor, builder-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -93,6 +109,7 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--BDD framework-->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>

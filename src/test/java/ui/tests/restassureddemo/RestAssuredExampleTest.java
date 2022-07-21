@@ -19,6 +19,11 @@ public class RestAssuredExampleTest {
     private static final String BASE_URL = "https://petstore.swagger.io/v2";
 
     private RequestSpecification requestSpecification;
+    private Long petId;
+
+    public void setPetId(String petId) {
+        this.petId = Long.parseLong(petId);
+    }
 
     @BeforeClass
     private void setUp(){
@@ -70,6 +75,9 @@ public class RestAssuredExampleTest {
                 .usingRecursiveComparison()
                 .ignoringFields("id")
                 .isEqualTo(requestPet);
+
+        setPetId(petId);
+        System.out.println("Pet id: " + petId);
     }
 
     @Test
@@ -77,8 +85,7 @@ public class RestAssuredExampleTest {
     public void creteOrder(){
         OrderDto requestOrder = OrderDto
                 .builder()
-                .id(10101)
-                .petId(1)
+                .petId(petId)
                 .quantity(1000)
                 .shipDate(PreRequestsScriptsRestAssured.setData())
                 .status(PreRequestsScriptsRestAssured.StatusOrderPet.approved)
@@ -115,6 +122,7 @@ public class RestAssuredExampleTest {
         assertThat(responseOrder)
                 .isEqualTo(requestOrder);
 
+        System.out.println("Order id: " + orderId);
     }
 
     @Test

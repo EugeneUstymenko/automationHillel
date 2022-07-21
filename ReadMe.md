@@ -7,7 +7,7 @@ Stack using instruments:
 
     1. Maven
     2. Selenium/web driver
-    3. Junit
+    3. TestNG
     4. Selenide
     5. Rest-assured
     6. Hamcrest
@@ -90,3 +90,19 @@ Test #6 "Use selenide search"
     6. Check that Selenide supports Ukraine
     7. Go to "Blog" tab
     8. Check if the page is open
+
+Test #7 "Rest assured example"
+
+    website: https://petstore.swagger.io/
+
+    task
+    1. Write a POST/pet request
+    2. Check that the pet has been created
+    3. To check use GET/pet/:petId
+    4. For the pet entity, create a dto class
+
+    task
+    1. Write a POST/store/order request and using the previously created pet
+    2. Check that the order has been created
+    3. To check use GET/store/order/:orderId
+    4. For the order entity, create a dto class

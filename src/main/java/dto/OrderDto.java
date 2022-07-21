@@ -12,8 +12,7 @@ import lombok.extern.jackson.Jacksonized;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderDto {
 
-    private int id;
-    private int petId;
+    private long petId;
     private int quantity;
     private String shipDate;
     private PreRequestsScriptsRestAssured.StatusOrderPet status;

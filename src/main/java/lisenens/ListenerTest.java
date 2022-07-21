@@ -3,7 +3,7 @@ package lisenens;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class TestListener implements ITestListener {
+public class ListenerTest implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
