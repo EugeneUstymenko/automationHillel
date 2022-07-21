@@ -81,5 +81,11 @@
             return true;*/
 
 
-        //Пример как скармливать селениду - веб драйвер
+        //Пример как скармливать selenide - web driver
         //WebDriverRunner.setWebDriver(driver);
+
+
+        //Пример как можно с помощью web driver switch на другой таб в браузере
+        /*WebDriverRunner.getWebDriver()
+                                .switchTo()
+                                .window(WebDriverRunner.getWebDriver().getWindowHandles().toArray()[1].toString());*/

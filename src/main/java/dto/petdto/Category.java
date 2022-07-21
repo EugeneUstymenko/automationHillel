@@ -1,4 +1,4 @@
-package dto;
+package dto.petdto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
@@ -9,10 +9,8 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PetDto {
+public class Category {
 
-    private long id;
     private String name;
-    private String status;
 
 }

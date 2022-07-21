@@ -1,8 +1,8 @@
 package cucumber.glue.stepdefs;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
 
 //Step definitions
 public class TheInternetLoginPageStepDefs {

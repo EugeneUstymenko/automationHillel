@@ -9,7 +9,7 @@ public interface FrameworkProperties extends Config {
     @Key("foo.bar")
     String getFooBar();
 
-    @Key("selenium.pageload.timeout")
+    @Key("selenium.pageLoad.timeout")
     int getPageTimeout();
 
     @Key("text.test")

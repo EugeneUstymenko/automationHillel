@@ -22,4 +22,3 @@ Feature: Log in
       | tomsmith  | qweqwe              |
       | qweqweqwe | qweqwe              |
 
-

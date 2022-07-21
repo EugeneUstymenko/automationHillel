@@ -1,8 +1,9 @@
 package ui.tests.restassureddemo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dto.petdto.Category;
 import dto.OrderDto;
-import dto.PetDto;
+import dto.petdto.PetDto;
 import helpers.PreRequestsScriptsRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -40,6 +41,10 @@ public class RestAssuredExampleTest {
                 .builder()
                 .status("available")
                 .name("Barsik")
+                .category(Category
+                        .builder()
+                        .name("Pushistiki")
+                        .build())
                 .build();
 
         //Request creating pet
@@ -123,6 +128,26 @@ public class RestAssuredExampleTest {
                 .isEqualTo(requestOrder);
 
         System.out.println("Order id: " + orderId);
+    }
+
+    @Test
+    @SneakyThrows
+    public void lestResponseTest(){
+        String responseJson = RestAssured
+                .given()
+                .spec(requestSpecification)
+                .params("status", "available")
+                .when()
+                .get("/pet/findByStatus")
+                .then()
+                .extract()
+                .body()
+                .asString();
+
+        PetDto[] listPetDto = new ObjectMapper().readValue(responseJson, PetDto[].class);
+
+        assertThat(listPetDto)
+                .allMatch(element -> element.getStatus().equals("available"));
     }
 
     @Test

@@ -11,6 +11,7 @@
 
     <suite-files>
         <suite-file path="TheInternetSuite.xml"/>
+        <suite-file path="LisenensSuite.xml"/>
         <suite-file path="UkrNetSuite.xml"/>
         <suite-file path="CheckBoxesSuite.xml"/>
         <suite-file path="WaitSuite.xml"/>
