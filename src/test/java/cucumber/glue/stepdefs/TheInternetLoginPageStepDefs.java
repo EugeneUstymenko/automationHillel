@@ -1,5 +1,6 @@
 package cucumber.glue.stepdefs;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -12,12 +13,12 @@ public class TheInternetLoginPageStepDefs {
         System.out.println("Hello world!");
     }
 
-    @When("^user enters '(.*)' in login field and '(.*)' in password$")
+    @When("^user enters '(.*)' in login field and '{string}' in password$")//{string} это cucumber regular
     public void userEntersCredentials(String login, String password) {
         System.out.println(login + " " + password);
     }
 
-    @When("clicks 'Login' button")
+    @And("clicks 'Login' button")
     public void clicksLoginButton() {
         System.out.println("Click login button");
     }
