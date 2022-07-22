@@ -1,11 +1,11 @@
-package ui.wait;
+package ui.tests.wait;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.wait.AppearWaitPage;
 import pages.wait.DisappearWaitPage;
 import pages.wait.TextChangeWaitPage;
-import ui.BaseTest;
+import ui.tests.BaseTest;
 
 public class WaitTest extends BaseTest {
 

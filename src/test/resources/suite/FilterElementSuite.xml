@@ -3,7 +3,7 @@
 <suite name="Filter element suite">
     <test name="Filter element">
         <classes>
-            <class name="ui.filterelement.FilterElementTest" />
+            <class name="ui.tests.filterelement.FilterElementTest" />
         </classes>
     </test>
 </suite>

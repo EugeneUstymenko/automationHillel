@@ -1,9 +1,9 @@
-package ui.checkboxes;
+package ui.tests.checkboxes;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.checkboxes.CheckBoxesPage;
-import ui.BaseTest;
+import ui.tests.BaseTest;
 
 public class CheckBoxesTest extends BaseTest {
 

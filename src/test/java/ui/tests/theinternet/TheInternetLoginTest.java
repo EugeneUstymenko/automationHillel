@@ -1,15 +1,15 @@
-package ui.theinternet;
+package ui.tests.theinternet;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.theinternet.TheInternetLoginPage;
 import testdata.User;
-import ui.BaseTest;
+import ui.tests.BaseTest;
 import ui.dataproviders.DataProviders;
 
 public class TheInternetLoginTest extends BaseTest {
 
-    @Test(description = "Error message should appears if user enters invalid credentials",
+    @Test(testName = "First test", description = "Error message should appears if user enters invalid credentials",
             dataProvider = "user-credentials",
             dataProviderClass = DataProviders.class)
     public void errorMessageShouldAppears(String login, String password, String errorMessage) {

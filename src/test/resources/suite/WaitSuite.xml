@@ -3,7 +3,7 @@
 <suite name="Wait suite">
     <test name="Wait">
         <classes>
-            <class name="ui.wait.WaitTest" />
+            <class name="ui.tests.wait.WaitTest" />
         </classes>
     </test>
 </suite>

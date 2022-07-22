@@ -1,9 +1,9 @@
-package ui.filterelement;
+package ui.tests.filterelement;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.filterelement.FilterElementPage;
-import ui.BaseTest;
+import ui.tests.BaseTest;
 import java.util.ArrayList;
 import java.util.List;
 
