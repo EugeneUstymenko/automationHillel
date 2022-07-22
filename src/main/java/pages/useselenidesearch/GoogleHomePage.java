@@ -1,4 +1,4 @@
-package pages.google;
+package pages.useselenidesearch;
 
 import org.openqa.selenium.By;
 import pages.BasePage;

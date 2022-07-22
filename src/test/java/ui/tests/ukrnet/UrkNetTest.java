@@ -2,7 +2,7 @@ package ui.tests.ukrnet;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.mailinator.MailinatorInboxPage;
+import pages.ukrnet.MailinatorInboxPage;
 import pages.ukrnet.HomePage;
 import pages.ukrnet.LoginPage;
 import testdata.User;

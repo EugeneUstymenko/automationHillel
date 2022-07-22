@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Selenide suite">
-    <test name="Google">
+<suite name="Use selenide search suite">
+    <test name="Use selenide search">
         <classes>
             <class name="ui.tests.useselenidesearch.UseSelenideSearchTest" />
         </classes>

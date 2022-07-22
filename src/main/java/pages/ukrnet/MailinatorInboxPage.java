@@ -1,4 +1,4 @@
-package pages.mailinator;
+package pages.ukrnet;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;

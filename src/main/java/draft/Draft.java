@@ -81,3 +81,5 @@
             return true;*/
 
 
+        //Пример как скармливать селениду - веб драйвер
+        //WebDriverRunner.setWebDriver(driver);

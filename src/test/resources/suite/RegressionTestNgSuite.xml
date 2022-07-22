@@ -15,6 +15,7 @@
         <suite-file path="CheckBoxesSuite.xml"/>
         <suite-file path="WaitSuite.xml"/>
         <suite-file path="FilterElementSuite.xml"/>
-        <suite-file path="SelenideSuite.xml"/>
+        <suite-file path="UseSelenideSearchSuite.xml"/>
+        <suite-file path="RestAssuredExampleSuite.xml"/>
     </suite-files>
 </suite>

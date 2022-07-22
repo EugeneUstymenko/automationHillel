@@ -34,4 +34,5 @@ public class CheckBoxesTest extends BaseTest {
     public void checkBoxesOptionTest(){
         Assert.assertTrue(checkBoxesPage.selectAllBelowCheckBox());
     }
+
 }

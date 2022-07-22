@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Listener the internet suite">
+    <listeners>
+        <listener class-name="lisenens.ListenerTest"/>
+    </listeners>
+    <test name="Listener the internet login">
+        <classes>
+            <class name="ui.tests.theinternet.TheInternetLoginTest" />
+        </classes>
+    </test>
+</suite>
