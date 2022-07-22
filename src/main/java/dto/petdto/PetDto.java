@@ -11,7 +11,7 @@ import lombok.extern.jackson.Jacksonized;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PetDto {
 
-    private long id;
+    private Long id;
     private String name;
     private String status;
     private Category category;

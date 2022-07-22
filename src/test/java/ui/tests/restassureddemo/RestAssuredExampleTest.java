@@ -11,6 +11,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.specification.RequestSpecification;
 import lombok.SneakyThrows;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,16 +23,17 @@ public class RestAssuredExampleTest {
     private RequestSpecification requestSpecification;
     private Long petId;
 
-    public void setPetId(String petId) {
-        this.petId = Long.parseLong(petId);
-    }
-
     @BeforeClass
     private void setUp(){
         requestSpecification = new RequestSpecBuilder()
                         .setBaseUri(BASE_URL)
                         .addHeader("Content-Type", "application/json")
                         .build();
+    }
+
+    @BeforeMethod
+    public void setPetId(){
+        petId = 14123351002L;
     }
 
     @Test
@@ -41,6 +43,7 @@ public class RestAssuredExampleTest {
                 .builder()
                 .status("available")
                 .name("Barsik")
+                .id(petId)
                 .category(Category
                         .builder()
                         .name("Pushistiki")
@@ -48,7 +51,7 @@ public class RestAssuredExampleTest {
                 .build();
 
         //Request creating pet
-        String petId = RestAssured
+        RestAssured
                 .given()
                 .spec(requestSpecification)
                 .body(new ObjectMapper().writeValueAsString(requestPet))// from java obj to json
@@ -58,8 +61,7 @@ public class RestAssuredExampleTest {
                 .statusCode(200)
                 .extract()
                 .body()
-                .jsonPath()
-                .getString("id");
+                .jsonPath();
 
         //Request getting pet
         JsonPath jsonResponsePet = RestAssured
@@ -81,7 +83,6 @@ public class RestAssuredExampleTest {
                 .ignoringFields("id")
                 .isEqualTo(requestPet);
 
-        setPetId(petId);
         System.out.println("Pet id: " + petId);
     }
 
@@ -90,6 +91,7 @@ public class RestAssuredExampleTest {
     public void creteOrder(){
         OrderDto requestOrder = OrderDto
                 .builder()
+                .id(7020L)
                 .petId(petId)
                 .quantity(1000)
                 .shipDate(PreRequestsScriptsRestAssured.setData())
@@ -109,7 +111,6 @@ public class RestAssuredExampleTest {
                 .body()
                 .jsonPath()
                 .getInt("id");
-
 
         JsonPath jsonResponseOrder = RestAssured
                 .given()
